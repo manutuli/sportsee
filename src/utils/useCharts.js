@@ -42,7 +42,6 @@ function useCharts (option, userId) {
                 const response = await fetch(url, {signal: abortController.signal,})
                 const data = await response.json()
                 const formattedChart = FormatCharts(opt, data)
-                // console.log(`Hook ${option} : `, formattedChart)
                 setChart(formattedChart)
                 setError(null)
             }

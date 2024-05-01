@@ -1,5 +1,4 @@
 function FormatCharts(option, data) {
-    // console.log(`Format ${option} : `, data)
     const obj = {}
     if (option === "performance" ) {
         obj.kind = data.data.data.map((o, index ) => o.kind = data.data.kind[index+1])

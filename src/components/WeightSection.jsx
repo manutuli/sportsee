@@ -3,7 +3,6 @@ import useCharts  from "../utils/useCharts";
 function WeightSection(){
     const userId = 18
     const [isLoading, chart, error] = useCharts("activity", userId);
-    // error ? console.log("weight error : ", error) : console.log("activity "+ isLoading +" : ", chart?.sessions);
     const component = isLoading||error ?
     <div>Loading...</div> :
      ( 

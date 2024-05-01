@@ -39,6 +39,7 @@ body  *  {
 }
 
 
+
 /* ELEMENTS */
 div, main, section, nav, header, article, span, footer, ul {
   display: flex;
@@ -109,24 +110,6 @@ button:focus-visible {
 
 
 
-/* LAYOUT */
-.outer-container {
-  width: 100%;
-  height: 100%;
-}
-.inner-container {
-  display: grid;
-  min-height: 80vh;
-  height: 100vh;
-  width: 100%;
-  grid-template-columns: 10% 90%;
-}
-.icon-footer, .title-nav {
-  background-color: #000;
-}
-
-
-
 /* NAVGITION */
 .title-nav {}
 
@@ -189,30 +172,40 @@ footer > .copyrights {
 }
 
 
+
+
+/* LAYOUT */
+.outer-container {
+  width: 100%;
+  height: 100%;
+}
+.inner-container {
+  display: grid;
+  min-height: 80vh;
+  height: 90vh;
+  width: 100%;
+  grid-template-columns: 10% 90%;
+}
+
 /*  API layout */
 .api-container {
-  height: 100%;
-  width: 900px;
+  padding: 0 0 0 3%;
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 3%;
   /* outline: 1px solid yellowgreen; */
 }
 .main-content {
+  gap: 20px;
   justify-content: start;
   flex-wrap: nowrap;
-  gap: 20px;
-  width: 800px;
-  height: 70%;
-  padding: 2%;
   /* outline: 2px solid yellow; */
 }
 .inner-main {
-  height: 100%;
-  max-width: 550px;
+  height: 450px;
+  max-width: 600px;
   justify-content: start;
-  /* outline: 2px solid burlywood; */
+  /* outline: 2px solid red; */
 }
 .section-big {
   width: 100%;
@@ -230,7 +223,7 @@ footer > .copyrights {
   height: 90%;
 }
 .section-small {
-  height: 100%;
+  height: 450px;
   align-items: end;
   justify-content: end;
 }
@@ -260,16 +253,6 @@ header {
   content: attr(firstName);
   overflow: visible;
   margin-left: 15px;
-}
-
-
-/*  */
-article {
-  overflow: hidden;
-  font-size: 14px;
-}
-.recharts-wrapper {
-  /* outline: 1px solid blue; */
 }
 
 

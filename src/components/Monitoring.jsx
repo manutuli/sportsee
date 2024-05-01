@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 // 
 function Monitoring(props){
     const {...data} = props.keyData
-    console.log(data)
     return (
     <div id="monitoring" className="monitoring">
         <article className="monitoring-article" id="calories">
