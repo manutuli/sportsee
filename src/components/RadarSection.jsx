@@ -10,15 +10,23 @@ function RadarSection(){
         <article id="radar" className="radar">
             <ResponsiveContainer width="90%" height="90%">
                 <RadarChart 
+                  outerRadius={50}
                   data={chart?.data} 
                 >
                   <PolarGrid 
                     radialLines={false} 
-                    polarRadius={[5, 15, 25, 40, 50]} 
+                    polarRadius={[4, 12, 24, 38, 48]} 
                     gridType="polygon" 
                   />
-                  <PolarAngleAxis tick={{fontSize: "10"}} dataKey="kind" />
-                  <Radar dataKey="value" stroke="transparent" fill="#f00" fillOpacity={0.6} />
+                  <PolarAngleAxis 
+                    tick={{fontSize: "9", }} 
+                    dataKey="kind" 
+                  />
+                  <Radar 
+                    dataKey="value" 
+                    fill="#f00" 
+                    fillOpacity={0.6} 
+                  />
                 </RadarChart>
             </ResponsiveContainer>
         </article>

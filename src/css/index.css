@@ -31,29 +31,33 @@ body::before,
 body::after,
 body  *  {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-#root {
-  width: 100%;
-  height: 100%;
-}
-
 
 
 /* ELEMENTS */
-div, main, section, nav, header, article, span, footer, ul {
+div, 
+nav, 
+main, 
+article, 
+section,
+header, 
+footer, 
+aside, 
+span, 
+ul {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  /* outline: 1px solid #4AB8FF; */
 }
 nav {
   background-color: #000;
   height: 100%;
   width: 100%;
 }
-footer {
+aside {
   background-color: #000;
   height: 100%;
   width: 100%;
@@ -67,9 +71,9 @@ span {
   min-width: 10px;
   min-height: 20px;
 }
-footer svg, nav svg {
-  max-width: 100px;
-  max-height: 50px;
+aside svg, nav svg {
+  max-width: 50px;
+  max-height: 25px;
 }
 h1 {
   font-size: 2.2em;
@@ -113,8 +117,12 @@ button:focus-visible {
 /* NAVGITION */
 .title-nav {}
 
-.logo-nav {}
-
+.logo-nav > img {
+  max-width: 120px;
+}
+.logo-nav {
+  padding-left: 25px;
+}
 nav > ul {
   gap: 9vw;
   min-height: 10vh;
@@ -123,9 +131,7 @@ nav > ul {
   justify-content: flex-start;
 }
 
-.logo-nav {
-  width: 120px;
-}
+
 
 .nav-list {
   /*  */
@@ -139,35 +145,24 @@ nav > ul {
 
 /* FOOTER */
 .vertical {
-  align-items: start;
-}
-footer > ul {
-  position: fixed;
-  top: 150px;
-  gap: 2vw;
-  padding: 15px;
-}
-footer > .copyrights {
-  position: fixed;
-  top: 550px;
+  align-items: end;
 }
 .copyrights {
-  font-size: 12px;
+  position: relative;
+  top: -30px;
+  font-size: 10px;
   writing-mode: vertical-lr;
   transform: rotate(-180deg);
   color: var(--color-light);
 }
-.icon-footer {
+.icon-aside {
   background-color: var(--color-light);
   border-radius: var(--border-radius);
 }
-.footer-list {
-  /*  */
+.aside-list > li {
+  padding: 10px;
 }
-.vertical {
-  /*  */
-}
-.icon-footer {
+.icon-aside {
   /*  */
 }
 
@@ -191,21 +186,17 @@ footer > .copyrights {
 .api-container {
   padding: 0 0 0 3%;
   align-items: flex-start;
-  flex-direction: column;
   justify-content: flex-start;
-  /* outline: 1px solid yellowgreen; */
 }
 .main-content {
   gap: 20px;
-  justify-content: start;
   flex-wrap: nowrap;
-  /* outline: 2px solid yellow; */
+  justify-content: start;
 }
 .inner-main {
   height: 450px;
   max-width: 600px;
   justify-content: start;
-  /* outline: 2px solid red; */
 }
 .section-big {
   width: 100%;
@@ -225,7 +216,6 @@ footer > .copyrights {
 .section-small {
   height: 450px;
   align-items: end;
-  justify-content: end;
 }
 
 
@@ -235,7 +225,6 @@ header {
   width: 90%;
   justify-content: start;
   padding: 2%;
-  /* outline: 2px solid green; */
 }
 .greeting-container {
   justify-content: start;
@@ -244,7 +233,6 @@ header {
   min-width: 50%;
   display: flex;
   justify-content: start;
-  /* outline: 2px dashed darkblue; */
 }
 #username {
   color: var(--color-logo);
@@ -263,6 +251,13 @@ header {
   width: 100%;
   border-radius: var(--border-radius);
   background-color: var(--color-light);
+}
+.weight-title {
+  position: relative;
+  font-weight: bold;
+  font-size: small;
+  top: 50px;
+  left: -200px;
 }
 
 
@@ -293,28 +288,24 @@ header {
 
 /* monitoring */
 .monitoring {
-  height: 100%;
   max-width: 300px;
+  gap: 30px;
   align-items: end;
   flex-direction: column;
-  justify-content: space-between;
-  /* outline: 1px solid var(--color-pink); */
 }
-.monitoring > article {
+.monitoring-article {
   width: 100%;
   padding: 20px;
-  justify-content: start;
-  overflow: visible;
+  justify-content: space-between;
   border-radius: var(--border-radius);
   background-color: var(--color-light);
-  /* outline: 1px solid var(--color-blue); */
 }
 .icon-monitoring {
   border-radius: var(--border-radius);
 }
 .monitoring-info {
-  flex-direction: column;
   width: 60%;
+  flex-direction: column;
   justify-content: end;
 }
 .monitoring-title {
@@ -358,13 +349,7 @@ header {
   /*  */
 }
 @media screen and (max-width: 780px) {
-  nav > ul {
-    gap: 3vh;
-  }
-  .section-medium {
-    /* outline: 2px solid black; */
-    /* flex-direction: column; */
-  }
+  /*  */
 }
 
 @media (prefers-color-scheme: light) {
