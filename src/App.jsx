@@ -4,43 +4,48 @@ import RadarSection from './components/RadarSection'
 import ScoreSection from './components/ScoreSection'
 import Monitoring from './components/Monitoring'
 import Header from './components/Header'
-import HorizontalNav from './components/HorizontalNav'
-import VerticalNav from './components/VerticalNav'
-import useFetch from './utils/useCharts'
-function App() {
-  const userId = 18 // useParams
-  const [isLoading, chart, error] = useFetch("user", userId)
-  const component = isLoading||error ?
-  <div>Loading...</div> :
-   (
-    <div className='outer-container'>
-      <HorizontalNav />
-      <div className='inner-container'>
-        <VerticalNav />
-        <div className='api-container'>
-          <Header userInfos={{...chart?.userInfos}}/>
+import useCharts from './utils/useCharts'
+import { Suspense } from 'react'
+import PropTypes from 'prop-types'
+function App(props) {
+  const userId = props.id // useParams
+  const [
+    chart, 
+  ] = useCharts("user", userId)
+   return(        
+    <div className='api-container'>
+          <Suspense fallback={<p>Loading...</p> }>
+            <Header userInfos={{...chart?.userInfos}}/>
+          </Suspense>
           <main className='main-content'>
             <div className="inner-main">
               <section className='section-big'>
-                <WeightSection />
+                <Suspense fallback={<p>Loading...</p> }>
+                  <WeightSection />
+                </Suspense>
               </section>
               <section className='section-medium'>
-                <GoalsSection />
-                <RadarSection />
-                <ScoreSection score={chart?.score} />
+                <Suspense fallback={<p>Loading...</p> }>
+                  <GoalsSection />
+                </Suspense>
+                <Suspense fallback={<p>Loading...</p> }>
+                  <RadarSection />
+                </Suspense>
+                <Suspense fallback={<p>Loading...</p> }>
+                  <ScoreSection score={chart?.score} />
+                </Suspense>
               </section>
             </div>
             <section className='section-small'>
-              <Monitoring keyData={{...chart?.keyData}}/>
+              <Suspense fallback={<p>Loading...</p> }>
+                <Monitoring keyData={{...chart?.keyData}}/>
+              </Suspense>
             </section>
           </main>
         </div>
-      </div>
-    </div>
   )
-  return component
 }
-// App.prototype = {
-  
-// }
+App.propTypes={
+  id: PropTypes.number,
+}
 export default App

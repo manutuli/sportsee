@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import FormatCharts from "./formatCharts";
+import formatCharts from "./formatCharts";
+// import fetchData from "./fetchData";
+import { mock } from "./mock";
 // 
 function useCharts (option, userId) {
-    const [isLoading, setLoading] = useState(false)
+    // const [isLoading, setLoading] = useState(false)
+    // const [error, setError] = useState(null)
     const [chart, setChart] = useState(null)
-    const [error, setError] = useState(null)
     const [opt, setOption] = useState("")
     const [uid, setUserId] = useState(0)
     // 
@@ -35,31 +37,30 @@ function useCharts (option, userId) {
             default : "error"
         }
         if (!url||!opt||!uid) return
-        const abortController = new AbortController()
+        const controller = new AbortController()
         const FetchChart = async () => {
             try {
-                setLoading(true)
-                const response = await fetch(url, {signal: abortController.signal,})
-                const data = await response.json()
-                const formattedChart = FormatCharts(opt, data)
+                const response = await fetch(url, {signal: controller.signal,})
+                const formattedChart = formatCharts(opt, await response.json())
                 setChart(formattedChart)
-                setError(null)
             }
             catch (e) {
-                if (e.name === "AbortError") {console.log('abort error : ', e.name); return}
-                setError(e)
-                setChart(null)
-                console.log('error', e)
+                if (e.name === "AbortError") {console.log('abort error : ', e); return}
+                console.log('fetch error : ', e)
+                const formattedChart = formatCharts(opt, {data : mock[opt][0]})
+                setChart(formattedChart)
             }
-            finally {
-                setLoading(false)
-            }
+            // finally {
+            //     // setLoading(false)
+            // }
         }
         FetchChart()
-        return () => abortController.abort()
+        return () => controller.abort()
     },[option, userId, opt, uid]);
     // 
-    return [isLoading, chart, error];
+    return [
+        chart, 
+    ];
 }
 
 export default useCharts;

@@ -3,10 +3,10 @@ import useCharts from "../utils/useCharts"
 // 
 function RadarSection(){
   const userId = 18;
-    const [isLoading, chart, error] = useCharts("performance", userId)
-    const component = isLoading||error ?
-      <div>Loading...</div> :
-     (
+    const [
+      chart, 
+    ] = useCharts("performance", userId)
+    return (
         <article id="radar" className="radar">
             <ResponsiveContainer width="90%" height="90%">
                 <RadarChart 
@@ -31,7 +31,6 @@ function RadarSection(){
             </ResponsiveContainer>
         </article>
     )
-    return component
 }
 
 export default RadarSection

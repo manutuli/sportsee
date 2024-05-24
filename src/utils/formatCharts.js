@@ -1,4 +1,4 @@
-function FormatCharts(option, data) {
+function formatCharts(option, data) {
     const obj = {}
     if (option === "performance" ) {
         obj.kind = data.data.data.map((o, index ) => o.kind = data.data.kind[index+1])
@@ -10,9 +10,9 @@ function FormatCharts(option, data) {
         return obj
     }
     if (option === "user" ) {
-        const {userInfos, score, keyData} = data.data
+        const {userInfos, score, todayScore, keyData} = data.data
         obj.userInfos = userInfos
-        obj.score = score
+        obj.score = score ? score : todayScore
         obj.keyData = keyData
         return obj
     }
@@ -23,4 +23,4 @@ function FormatCharts(option, data) {
         return obj
     }
 }
-export default FormatCharts
+export default formatCharts

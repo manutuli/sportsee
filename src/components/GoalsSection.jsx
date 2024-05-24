@@ -3,7 +3,9 @@ import useCharts from "../utils/useCharts"
 import PropTypes from "prop-types"
 function GoalsSection(){
     const userId = 18
-    const [isLoading, chart, error] = useCharts("sessions", userId)
+    const [
+      chart, 
+    ] = useCharts("sessions", userId)
     function CustomTooltip ({ active, payload }) {
       if (active && payload) {
         return (
@@ -17,10 +19,7 @@ function GoalsSection(){
       active: PropTypes.bool,
       payload: PropTypes.array,
     }
-    // 
-    const component = isLoading||error ? 
-      <div>Loading...</div> : 
-     (
+   return (
         <article  className="goals">
             <ResponsiveContainer width="90%" height="90%">
                 <LineChart 
@@ -58,7 +57,6 @@ function GoalsSection(){
             </ResponsiveContainer>
         </article>
     )
-    return component
 }
 
 export default GoalsSection

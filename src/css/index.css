@@ -236,9 +236,6 @@ header {
 }
 #username {
   color: var(--color-logo);
-}
-#username::after {
-  content: attr(firstName);
   overflow: visible;
   margin-left: 15px;
 }

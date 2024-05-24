@@ -30,7 +30,7 @@ function ScoreSection({...props}){
                     endAngle={440}
                     data={[{
                         name: "Score", 
-                        msg: ` ${props.score * 100}% `,
+                        msg: ` ${props.score ? props.score * 100 : 1}% `,
                         txt: "de votre",
                         txt2: " objectif",
                         value: props.score * 100,
@@ -67,5 +67,4 @@ ScoreSection.propTypes={
     score: PropTypes.number,
     data: PropTypes.array,
 }
-
 export default ScoreSection

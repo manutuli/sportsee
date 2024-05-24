@@ -1,5 +1,7 @@
+import PropTypes from "prop-types";
+
 function Header({...props}){
-    const paragraph = <p id="username" firstname={props.userInfos.firstName}></p>
+    const paragraph = <p id="username">{props.userInfos.firstName}</p>
     return (
     <header>
         <div className="greeting-container" >
@@ -11,5 +13,8 @@ function Header({...props}){
     </header>
     )
 }
-
+Header.propTypes={
+    userInfos: PropTypes.object,
+    firstName: PropTypes.string,
+}
 export default Header

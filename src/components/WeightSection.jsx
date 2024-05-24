@@ -3,7 +3,9 @@ import useCharts from "../utils/useCharts";
 import PropTypes from "prop-types"
 function WeightSection(){
     const userId = 18
-    const [isLoading, chart, error] = useCharts("activity", userId);
+    const [
+        chart, 
+    ] = useCharts("activity", userId);
     function CustomTooltip ({ active, payload }) {
         if (active && payload && payload.length) {
           return (
@@ -22,9 +24,7 @@ function WeightSection(){
         active: PropTypes.bool,
         payload: PropTypes.array,
     }
-    const component = isLoading||error ?
-    <div>Loading...</div> :
-     ( 
+    return ( 
         <article className="weight">
             <p className="weight-title"> Activité quotidienne </p>
             <ResponsiveContainer width="90%" height="90%">
@@ -60,6 +60,5 @@ function WeightSection(){
             </ResponsiveContainer>
         </article>
     )
-    return component
 }
 export default WeightSection
