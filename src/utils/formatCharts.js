@@ -1,7 +1,9 @@
 function formatCharts(option, data) {
     const obj = {}
     if (option === "performance" ) {
-        obj.kind = data.data.data.map((o, index ) => o.kind = data.data.kind[index+1])
+        const temp = ['Cardio', 'Energie', 'Endurance', 'Force', 'Vitesse', 'Intensité']
+        // obj.kind = data.data.data.map((o, index ) => o.kind = data.data.kind[index+1])
+        obj.kind = data.data.data.map((o, index ) => o.kind = temp[index])
         obj.data = data.data.data.toReversed()
         return obj
     }

@@ -1,8 +1,8 @@
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 import useCharts from "../utils/useCharts";
 import PropTypes from "prop-types"
-function WeightSection(){
-    const userId = 18
+function WeightSection(props){
+    const {userId} = props
     const [
         chart, 
     ] = useCharts("activity", userId);
@@ -35,9 +35,10 @@ function WeightSection(){
                     <CartesianGrid vertical={false}/>
                     <Legend 
                         iconSize={0} 
+                        iconType="circle"
                         verticalAlign="top"
                         layout="vertical" 
-                        wrapperStyle={{right: "60px", scale: "0.9",}} 
+                        wrapperStyle={{ right: "60px", scale: "0.9",}} 
                     />
                     <Tooltip 
                         content={<CustomTooltip/>}
@@ -54,11 +55,14 @@ function WeightSection(){
                         orientation="right"
                         type="number"
                     />
-                    <Bar dataKey="kilogram" unit={"Kg"} name={"Weight (Kg)"} fill="#000" barSize={5} />
-                    <Bar dataKey="calories" unit={"Kcal"} name={"Activity (Kcal)"} fill="#f00" barSize={5}  />
+                    <Bar dataKey="kilogram" unit={"Kg"} name={"Poids (Kg)"} fill="#000" barSize={5} />
+                    <Bar dataKey="calories" unit={"Kcal"} name={"Calories brûlées (Kcal)"} fill="#f00" barSize={5}  />
                 </BarChart>
             </ResponsiveContainer>
         </article>
     )
+}
+WeightSection.propTypes={
+    userId: PropTypes.number,
 }
 export default WeightSection

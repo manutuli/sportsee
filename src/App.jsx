@@ -21,15 +21,15 @@ function App(props) {
             <div className="inner-main">
               <section className='section-big'>
                 <Suspense fallback={<p>Loading...</p> }>
-                  <WeightSection />
+                  <WeightSection userId={userId} />
                 </Suspense>
               </section>
               <section className='section-medium'>
                 <Suspense fallback={<p>Loading...</p> }>
-                  <GoalsSection />
+                  <GoalsSection userId={userId} />
                 </Suspense>
                 <Suspense fallback={<p>Loading...</p> }>
-                  <RadarSection />
+                  <RadarSection userId={userId} />
                 </Suspense>
                 <Suspense fallback={<p>Loading...</p> }>
                   <ScoreSection score={chart?.score} />

@@ -1,8 +1,8 @@
 import { RadarChart, Radar, ResponsiveContainer, PolarGrid, PolarAngleAxis } from "recharts"
 import useCharts from "../utils/useCharts"
-// 
-function RadarSection(){
-  const userId = 18;
+import PropTypes from "prop-types"
+function RadarSection(props){
+  const {userId} = props;
     const [
       chart, 
     ] = useCharts("performance", userId)
@@ -19,7 +19,7 @@ function RadarSection(){
                     gridType="polygon" 
                   />
                   <PolarAngleAxis 
-                    tick={{fontSize: "9", }} 
+                    tick={{fontSize: "10",}} 
                     dataKey="kind" 
                   />
                   <Radar 
@@ -32,5 +32,7 @@ function RadarSection(){
         </article>
     )
 }
-
+RadarSection.propTypes={
+  userId: PropTypes.number,
+}
 export default RadarSection

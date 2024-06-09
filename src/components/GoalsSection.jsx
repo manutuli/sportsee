@@ -1,8 +1,8 @@
 import { Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from "recharts"
 import useCharts from "../utils/useCharts"
 import PropTypes from "prop-types"
-function GoalsSection(){
-    const userId = 18
+function GoalsSection(props){
+    const {userId} = props
     const [
       chart, 
     ] = useCharts("sessions", userId)
@@ -58,5 +58,7 @@ function GoalsSection(){
         </article>
     )
 }
-
+GoalsSection.propTypes={
+  userId: PropTypes.number,
+}
 export default GoalsSection
